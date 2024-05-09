@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/UserService1.props" />
+</Project>
