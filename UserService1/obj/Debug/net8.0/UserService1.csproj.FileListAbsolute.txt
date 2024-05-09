@@ -258,3 +258,5 @@ C:/Users/estudiante/Desktop/puntonet/taller/UserService1/obj/Debug/net8.0/ref/Us
 /home/kevinlopez/Desktop/Arqui/taller/UserService1/obj/Debug/net8.0/UserService1.pdb
 /home/kevinlopez/Desktop/Arqui/taller/UserService1/obj/Debug/net8.0/UserService1.genruntimeconfig.cache
 /home/kevinlopez/Desktop/Arqui/taller/UserService1/obj/Debug/net8.0/ref/UserService1.dll
+/home/kevinlopez/Desktop/Arqui/taller/UserService1/obj/Debug/net8.0/UserService1.sourcelink.json
+/home/kevinlopez/Desktop/Arqui/taller/UserService1/bin/Debug/net8.0/appsettings.Production.json

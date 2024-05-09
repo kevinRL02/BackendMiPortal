@@ -62,9 +62,8 @@ namespace UserService1.Controllers{
             userCreateDto.Name -> userModel.Name
             userCreateDto.Password -> userModel.Password
             userCreateDto.Email -> userModel.Email
-            
             */
- 
+
            var userModel = _mapper.Map<User>(userCreateDto);
            _repo.AddUser(userModel);
            _repo.saveChanges();
@@ -74,7 +73,7 @@ namespace UserService1.Controllers{
             //retorna un 201
 
             //Llamado a el ShoppingService
-
+            //Asuncrono
             try{
                 await _httpShopingCartDataClient.SendUserToShoppingCart(userReadDTO);
             }catch(Exception ex){
