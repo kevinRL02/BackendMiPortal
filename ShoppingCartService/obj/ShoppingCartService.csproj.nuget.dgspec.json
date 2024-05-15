@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/kevinlopez/Desktop/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj": {}
+    "/home/kevinlopez/Desktop/U8/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj": {}
   },
   "projects": {
-    "/home/kevinlopez/Desktop/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj": {
+    "/home/kevinlopez/Desktop/U8/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/kevinlopez/Desktop/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj",
+        "projectUniqueName": "/home/kevinlopez/Desktop/U8/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj",
         "projectName": "ShoppingCartService",
-        "projectPath": "/home/kevinlopez/Desktop/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj",
+        "projectPath": "/home/kevinlopez/Desktop/U8/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj",
         "packagesPath": "/home/kevinlopez/.nuget/packages/",
-        "outputPath": "/home/kevinlopez/Desktop/Arqui/taller/ShoppingCartService/obj/",
+        "outputPath": "/home/kevinlopez/Desktop/U8/Arqui/taller/ShoppingCartService/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/kevinlopez/.nuget/NuGet/NuGet.Config"
