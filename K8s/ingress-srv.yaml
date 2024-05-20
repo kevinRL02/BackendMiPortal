@@ -13,8 +13,8 @@ spec:
           - path: /api/users
             pathType: Prefix
             backend:
-              service:
-                name: userservice-clusterip-srv
+              service: 
+                name: userservice-clusterip-srv   
                 port:
                   number: 8080
           - path: /api/c/user

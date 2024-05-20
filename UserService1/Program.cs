@@ -2,17 +2,41 @@ using Microsoft.EntityFrameworkCore;
 using PlatformService.Data;
 using UserService1.Data;
 using UserService1.SyncDataServices.Http;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var env = builder.Environment; // Get the IWebHostEnvironment instance
+
+
+
+var Configuration = builder.Configuration;// Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Esto se hace para la inyección de dependencias
-IServiceCollection serviceCollection = builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseInMemoryDatabase("InMemo"));
+IServiceCollection serviceCollection = builder.Services;
+
+// Use the env instance to check the environment
+
+if (env.IsProduction())
+{
+
+    //SI LO DEJO ASI VA A ESTAR POR DEFECTO EN DEVELOPMENT ENVIORONMENT
+    Console.WriteLine("Using SQL Server");
+    serviceCollection.AddDbContext<AppDbContext>(opt =>
+        opt.UseSqlServer(Configuration.GetConnectionString("PlatformsConn")));
+}
+
+
+else if (env.IsDevelopment())
+{
+   Console.WriteLine("Using mem InMemo");
+   //Esto se hace para la inyección de dependencias
+   serviceCollection.AddDbContext<AppDbContext>(opt =>
+       opt.UseInMemoryDatabase("InMemo"));
+}
+
 //Para la inyección de dependencias de Usuarios
 builder.Services.AddScoped<IUserRepo, UserRepoImp>();
 
@@ -24,7 +48,9 @@ builder.Services.AddHttpClient<IShoppingCartDataClient, HttpShopingCartDataClien
 
 
 var app = builder.Build();
-TempUserDataDb.LoadData(app);
+
+//Para que se carguen los datos quemados
+ TempUserDataDb.LoadData(app,env.IsProduction());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -33,7 +59,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 var summaries = new[]
 {
@@ -42,7 +68,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
