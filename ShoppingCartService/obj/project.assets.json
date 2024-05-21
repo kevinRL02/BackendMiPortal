@@ -4331,11 +4331,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kevinlopez/Desktop/U8/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj",
+      "projectUniqueName": "/home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ShoppingCartService/ShoppingCartService.csproj",
       "projectName": "ShoppingCartService",
-      "projectPath": "/home/kevinlopez/Desktop/U8/Arqui/taller/ShoppingCartService/ShoppingCartService.csproj",
+      "projectPath": "/home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ShoppingCartService/ShoppingCartService.csproj",
       "packagesPath": "/home/kevinlopez/.nuget/packages/",
-      "outputPath": "/home/kevinlopez/Desktop/U8/Arqui/taller/ShoppingCartService/obj/",
+      "outputPath": "/home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ShoppingCartService/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/kevinlopez/.nuget/NuGet/NuGet.Config"
@@ -4356,6 +4356,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4412,7 +4417,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

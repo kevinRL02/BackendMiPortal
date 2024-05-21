@@ -1,14 +1,10 @@
 namespace ShoppingCartService.Models
 {
-    public class ShoppingCart
+     public class ShoppingCart
     {
-        public int Id{get;set;}
-
-        public UserId {get;set}
-
-        public User user{get;set}
-
-        }
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
+        public ICollection<ItemsShoppingCart> Items { get; set; }
+    }
 }
-
-
