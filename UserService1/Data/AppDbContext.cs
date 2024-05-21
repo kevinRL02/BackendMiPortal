@@ -12,7 +12,6 @@ namespace UserService1.Data
         {
 
         }
-
         // Agrega la declaración de DbSet para la entidad User
         //public DbSet<User> Users { get; set; }: Este es un DbSet que representa una colección de entidades de usuario en la base de datos. DbSet es una propiedad de DbContext que permite acceder y realizar operaciones CRUD en una tabla de la base de datos. 
         //En este caso, la entidad de usuario está representada por la clase User definida en el espacio de nombres UserService1.Models.

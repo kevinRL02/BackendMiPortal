@@ -46,21 +46,15 @@ namespace UserService1.Data
                 appContex.Users.AddRange(
                     new User()
                     {
-                        Name = "Pepo",
-                        Email = "pepo@gmail.com",
-                        Password = "123"
+                        UserName = "Pepo",
                     },
                     new User()
                     {
-                        Name = "Juan",
-                        Email = "juan@gmail.com",
-                        Password = "abc"
+                        UserName = "Juan",
                     },
                     new User()
                     {
-                        Name = "María",
-                        Email = "maria@gmail.com",
-                        Password = "xyz"
+                        UserName = "María",
                     }
                 // Puedes agregar más usuarios según sea necesario
                 );

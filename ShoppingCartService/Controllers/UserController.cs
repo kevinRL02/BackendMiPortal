@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-
+ 
 namespace ShoppingCartService.Controllers{
 
+
+//Acá se gestiona la comunicación entre servicios
     [Route("api/c/[controller]")]
     [ApiController]
     public class UserController : ControllerBase{

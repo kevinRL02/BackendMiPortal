@@ -31,7 +31,7 @@ if (env.IsProduction())
 
 else if (env.IsDevelopment())
 {
-   Console.WriteLine("Using mem InMemo");
+       Console.WriteLine("Using mem InMemo");
    //Esto se hace para la inyección de dependencias
    serviceCollection.AddDbContext<AppDbContext>(opt =>
        opt.UseInMemoryDatabase("InMemo"));
@@ -50,7 +50,7 @@ builder.Services.AddHttpClient<IShoppingCartDataClient, HttpShopingCartDataClien
 var app = builder.Build();
 
 //Para que se carguen los datos quemados
- TempUserDataDb.LoadData(app,env.IsProduction());
+TempUserDataDb.LoadData(app,env.IsProduction());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

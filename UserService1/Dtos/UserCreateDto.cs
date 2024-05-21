@@ -5,9 +5,7 @@ namespace UserService1.Dtos{
         //DTOs están diseñados específicamente para transferir datos entre las capas de la aplicación (por ejemplo, entre el frontend y el backend).
         //os DTOs pueden evolucionar independientemente de la entidad de dominio. 
         //Por ejemplo, es posible que necesites agregar campos adicionales en un DTO para satisfacer nuevos requisitos de la interfaz de usuario sin afectar la estructura de la entidad de domini
-        public required string Name { get; set; }    
-        public required string Password { get; set; }
-        public required string Email {get;set;}
+        public required string UserName { get; set; }    
         
     }
 }
