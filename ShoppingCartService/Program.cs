@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ShoppingCartService.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllers();
+builder.Services.AddDbContext<AppDbContext>(opt =>
+       opt.UseInMemoryDatabase("InMemo"));
+
+builder.Services.AddScoped<IShoppingCartRepo, ShoppingCartImp>();
+
 
 
 var app = builder.Build();

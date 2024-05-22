@@ -1,14 +1,24 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ShoppingCartService.Models
 {
     public class ItemsShoppingCart
     {
-        public int Id{get;set;}
-        public int IdShoppingCart {get;set;}
-        public int IdProducts {get;set;}
-        public int QuantityProducst {get;set;}
-        public ShoppingCart ShoppingCart{get;set;}
-        public Products Product { get; set; }
+        [Key]
+        [Required]
+        public int Id { get; set; }
+
+        [Required]
+        public int ShoppingCartId { get; set; }
+
+        [Required]
+        public int ProductId { get; set; }
+
+        [Required]
+        public int QuantityProducts { get; set; }
+
+        public ShoppingCart? ShoppingCart { get; set; } // Permitir nulo
+
+        public Products? Product { get; set; } // Permitir nulo
     }
 }
-
-
