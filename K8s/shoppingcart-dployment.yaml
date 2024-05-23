@@ -44,3 +44,18 @@ spec :
     protocol : TCP
     port : 8080
     targetPort: 8080
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: shoppingcart-servicemonitor
+spec:
+  selector:
+    matchLabels:
+      app: shoppingcartservice
+  endpoints:
+  - port: shoppingcartservice
+    path: /swagger-stats/metrics
+  namespaceSelector:
+    matchNames:
+    - default

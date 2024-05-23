@@ -3,7 +3,6 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-using ShoppingCartService.Models;
 
 namespace ShoppingCartService.SyncDataServices.Http
 {
@@ -18,7 +17,7 @@ namespace ShoppingCartService.SyncDataServices.Http
             _configuration = configuration;
         }
 
-        public async Task<User> GetUserByIdAsync(int id)
+        public async Task<User?> GetUserByIdAsync(int id)
         {
             var url = $"{_configuration["UserService"]}{id}";
             var response = await _httpClient.GetAsync(url);

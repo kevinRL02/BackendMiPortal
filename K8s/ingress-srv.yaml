@@ -31,3 +31,38 @@ spec:
                 name: shoppingcartservice-clusterip-srv
                 port:
                   number: 8080
+          - path: /api/products
+            pathType: Prefix
+            backend:
+              service:
+                name: productservice-clusterip-srv
+                port:
+                  number: 8080
+          - path: /api/suppliers
+            pathType: Prefix
+            backend:
+              service:
+                name: productservice-clusterip-srv
+                port:
+                  number: 8080
+          - path: /api/supplierproductorders
+            pathType: Prefix
+            backend:
+              service:
+                name: productservice-clusterip-srv
+                port:
+                  number: 8080
+          - path: /api/productratings
+            pathType: Prefix
+            backend:
+              service:
+                name: productservice-clusterip-srv
+                port:
+                  number: 8080
+          - path: /api/productcategories
+            pathType: Prefix
+            backend:
+              service:
+                name: productservice-clusterip-srv
+                port:
+                  number: 8080

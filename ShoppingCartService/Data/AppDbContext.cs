@@ -24,17 +24,16 @@ namespace ShoppingCartService.Data
 
             modelBuilder.Ignore<User>(); 
             modelBuilder.Ignore<Products>();
+            modelBuilder.Ignore<ProductRating>();
 
             // modelBuilder.Entity<User>()
             // .HasMany(u => u.ShoppingCarts)
             // .WithOne(sc => sc.User)
             // .HasForeignKey(sc => sc.UserId);
-
             modelBuilder.Entity<ShoppingCart>()
             .HasMany(sc => sc.Items)
             .WithOne(isc => isc.ShoppingCart)
             .HasForeignKey(isc => isc.ShoppingCartId);
-
             // modelBuilder.Entity<ItemsShoppingCart>()
             // .HasKey(isc => new { isc.ShoppingCartId, isc.ProductId });
 

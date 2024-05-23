@@ -20,12 +20,12 @@ namespace ShoppingCartService.Data
 
         public IEnumerable<ShoppingCart> GetAllShoppingCarts()
         {
-            return _context.ShoppingCart.ToList();
+            return _context.ShoppingCart.ToList() ?? new List<ShoppingCart>();
         }
 
         public ShoppingCart GetShoppingCartById(int id)
         {
-            return _context.ShoppingCart.FirstOrDefault(c => c.Id == id);
+            return _context.ShoppingCart.FirstOrDefault(c => c.Id == id) ?? throw new Exception($"Shopping cart with id {id} not found");
         }
 
         public void CreateShoppingCart(ShoppingCart cart)
@@ -90,7 +90,7 @@ namespace ShoppingCartService.Data
 
         public IEnumerable<ShoppingCart> GetShoppingCartsByUserId(int userId)
         {
-            return _context.ShoppingCart.Where(c => c.UserId == userId).ToList();
+            return _context.ShoppingCart.Where(c => c.UserId == userId).ToList() ?? new List<ShoppingCart>();
         }
 
         public IEnumerable<ItemsShoppingCart> GetItemsByShoppingCartId(int shoppingCartId)
