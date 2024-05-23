@@ -40,7 +40,7 @@ namespace ShoppingCartService.Data
 
         public void UpdateShoppingCart(ShoppingCart cart)
         {
-            // Aquí no necesitas hacer nada, EF Core se encarga de esto.
+
         }
 
         public void DeleteShoppingCart(ShoppingCart cart)

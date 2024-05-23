@@ -22,10 +22,13 @@ namespace ShoppingCartService.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<User>()
-            .HasMany(u => u.ShoppingCarts)
-            .WithOne(sc => sc.User)
-            .HasForeignKey(sc => sc.UserId);
+            modelBuilder.Ignore<User>(); 
+            modelBuilder.Ignore<Products>();
+
+            // modelBuilder.Entity<User>()
+            // .HasMany(u => u.ShoppingCarts)
+            // .WithOne(sc => sc.User)
+            // .HasForeignKey(sc => sc.UserId);
 
             modelBuilder.Entity<ShoppingCart>()
             .HasMany(sc => sc.Items)

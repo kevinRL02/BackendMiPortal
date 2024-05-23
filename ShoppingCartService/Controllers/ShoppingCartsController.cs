@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCartService.Data;
 using ShoppingCartService.Models;
+using ShoppingCartService.SyncDataServices.Http;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ShoppingCartService.Controllers
 {
@@ -10,10 +13,12 @@ namespace ShoppingCartService.Controllers
     public class ShoppingCartsController : ControllerBase
     {
         private readonly IShoppingCartRepo _repository;
+        private readonly IUserServiceClient _userServiceClient;
 
-        public ShoppingCartsController(IShoppingCartRepo repository)
+        public ShoppingCartsController(IShoppingCartRepo repository, IUserServiceClient userServiceClient)
         {
             _repository = repository;
+            _userServiceClient = userServiceClient;
         }
 
         [HttpGet]
@@ -35,11 +40,15 @@ namespace ShoppingCartService.Controllers
         }
 
         [HttpPost("user/{userId}")]
-        public ActionResult<ShoppingCart> CreateShoppingCart(int userId, ShoppingCart shoppingCart)
+        public async Task<ActionResult<ShoppingCart>> CreateShoppingCart(int userId, ShoppingCart shoppingCart)
         {
-            // Asociar el ID del usuario al carrito de compra
-            shoppingCart.UserId = userId;
+            var user = await _userServiceClient.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
 
+            shoppingCart.UserId = userId;
             _repository.CreateShoppingCart(shoppingCart);
             _repository.SaveChanges();
 
@@ -58,7 +67,7 @@ namespace ShoppingCartService.Controllers
             shoppingCartFromRepo.UserId = shoppingCart.UserId; // Actualiza los campos necesarios
             shoppingCartFromRepo.Items = shoppingCart.Items;
             _repository.UpdateShoppingCart(shoppingCartFromRepo);
-            
+
             _repository.SaveChanges();
 
             return NoContent();
@@ -98,7 +107,7 @@ namespace ShoppingCartService.Controllers
             item.ShoppingCartId = cart.Id; // Asegurarse de que el ítem se asocie al carrito correcto
             _repository.AddItemToCart(item);
             _repository.SaveChanges();
-            return Ok("item");
+            return Ok(item);
         }
     }
 }

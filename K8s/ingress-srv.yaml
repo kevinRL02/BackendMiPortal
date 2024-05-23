@@ -8,16 +8,23 @@ spec:
   ingressClassName: nginx
   rules:
     - host: onlineshop.com
-      http:  
+      http:
         paths:
           - path: /api/users
             pathType: Prefix
             backend:
-              service: 
+              service:
                 name: userservice-clusterip-srv   
                 port:
                   number: 8080
-          - path: /api/c/user
+          - path: /api/c/shoppingcarts
+            pathType: Prefix
+            backend:
+              service:
+                name: shoppingcartservice-clusterip-srv
+                port:
+                  number: 8080
+          - path: /api/c/itemsshoppingcart
             pathType: Prefix
             backend:
               service:
