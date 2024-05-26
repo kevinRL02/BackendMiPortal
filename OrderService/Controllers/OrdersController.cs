@@ -4,7 +4,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Data;
 using OrderService.Models;
+using OrderService.EventModels;
+
 using OrderService.SyncDataServices.Http;
+using OrderService.AsyncDataServices;
 
 namespace OrderService.Controllers
 {
@@ -14,11 +17,15 @@ namespace OrderService.Controllers
     {
         private readonly IOrderRepository _repository;
         private readonly IShoppingCartClient _shoppingCartClient;
+        private readonly IMessageBusClient _messageBusClient;
 
-        public OrderController(IOrderRepository repository, IShoppingCartClient shoppingCartClient)
+
+        public OrderController(IOrderRepository repository, IShoppingCartClient shoppingCartClient, IMessageBusClient messageBusClient)
         {
             _repository = repository;
             _shoppingCartClient = shoppingCartClient;
+            _messageBusClient = messageBusClient;
+
         }
 
         [HttpGet("{id}", Name = "GetOrderById")]
@@ -52,6 +59,7 @@ namespace OrderService.Controllers
             Console.WriteLine($"Carrito de compras ID: {shoppingCart.Id}");
             Console.WriteLine($"Usuario ID: {shoppingCart.UserId}");
 
+            //SyncMessage
             var cartItems = await _shoppingCartClient.GetItemsByShoppingCartId(shoppingCart.Id);
 
             var orderItems = cartItems.ConvertAll(item => new OrderItem
@@ -81,7 +89,22 @@ namespace OrderService.Controllers
             _repository.CreateOrder(order);
             _repository.SaveChanges();
 
-            await _shoppingCartClient.ClearShoppingCart(shoppingCart.Id);
+            //Async
+            var orderCreatedEvent = new OrderCreatedEvent
+            {
+                ShoppingCartId = shoppingCart.Id,
+                OrderId = order.OrderId,
+                UserId = userId,
+                OrderItems = orderItems,
+                Event = "Order_Published"
+            };
+            
+             _messageBusClient.PublishNewOrder(orderCreatedEvent);
+
+            // Sync
+            //await _shoppingCartClient.ClearShoppingCart(shoppingCart.Id);
+
+
 
             return CreatedAtRoute(nameof(GetOrderById), new { id = order.OrderId }, order);
         }

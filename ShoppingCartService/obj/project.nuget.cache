@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lMQXhcWg5fU=",
+  "dgSpecHash": "h8tfEZ7PnYs=",
   "success": true,
   "projectFilePath": "/home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ShoppingCartService/ShoppingCartService.csproj",
   "expectedPackageFiles": [
@@ -58,6 +58,7 @@
     "/home/kevinlopez/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/mysql.data/8.4.0/mysql.data.8.4.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/mysql.entityframeworkcore/8.0.2/mysql.entityframeworkcore.8.0.2.nupkg.sha512",
+    "/home/kevinlopez/.nuget/packages/rabbitmq.client/6.8.1/rabbitmq.client.6.8.1.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
@@ -79,7 +80,7 @@
     "/home/kevinlopez/.nuget/packages/system.io/4.3.0/system.io.4.3.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.io.filesystem.accesscontrol/5.0.0/system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.io.pipelines/6.0.3/system.io.pipelines.6.0.3.nupkg.sha512",
-    "/home/kevinlopez/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
+    "/home/kevinlopez/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.memory.data/1.0.2/system.memory.data.1.0.2.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.reflection/4.3.0/system.reflection.4.3.0.nupkg.sha512",
@@ -98,7 +99,7 @@
     "/home/kevinlopez/.nuget/packages/system.text.encoding.codepages/6.0.0/system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512",
-    "/home/kevinlopez/.nuget/packages/system.threading.channels/6.0.0/system.threading.channels.6.0.0.nupkg.sha512",
+    "/home/kevinlopez/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512",

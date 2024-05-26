@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using ShoppingCartService.Data;
+using ShoppingCartService.EventProcessing;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShoppingCartService.SyncDataServices.Http;
+using ShoppingCartService.AsyncDataServices;
 
 var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment; // Get the IWebHostEnvironment instance
@@ -38,6 +41,8 @@ else if (env.IsDevelopment())
 
 
 builder.Services.AddScoped<IShoppingCartRepo, ShoppingCartImp>();
+builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
+builder.Services.AddHostedService<MessageBusSubscriber>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllers().AddJsonOptions(options =>

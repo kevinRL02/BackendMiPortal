@@ -1,9 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using OrderService.Data;
 using OrderService.SyncDataServices.Http;
+using OrderService.AsyncDataServices;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment; // Get the IWebHostEnvironment instance
@@ -27,19 +30,21 @@ if (env.IsProduction())
 
 else if (env.IsDevelopment())
 {
-       Console.WriteLine("Using mem InMemo");
-   //Esto se hace para la inyección de dependencias
-   serviceCollection.AddDbContext<AppDbContext>(opt =>
-       opt.UseInMemoryDatabase("InMemo"));
+    Console.WriteLine("Using mem InMemo");
+    //Esto se hace para la inyección de dependencias
+    serviceCollection.AddDbContext<AppDbContext>(opt =>
+        opt.UseInMemoryDatabase("InMemo"));
 }
 
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddControllers().AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-        });;
+        }); ;
 
 
 
