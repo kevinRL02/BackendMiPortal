@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ProductsService.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ProductsService.Data
 {
@@ -73,7 +74,7 @@ namespace ProductsService.Data
             var productCategory = _context.ProductCategory.FirstOrDefault(pc => pc.Id == id);
             if (productCategory == null)
             {
-                return NotFound();
+                return null;
             }
             return productCategory;
         }

@@ -66,3 +66,11 @@ spec:
                 name: productservice-clusterip-srv
                 port:
                   number: 8080
+          - path: /api/order
+            pathType: Prefix
+            backend:
+              service:
+                name: orderservice-clusterip-srv
+                port:
+                  number: 8080
+                  

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ShoppingCartService.Data;
 using ShoppingCartService.Models;
+using ShoppingCartService.SyncDataServices.Http;
+
 using System.Collections.Generic;
 
 namespace ShoppingCartService.Controllers
@@ -10,10 +12,14 @@ namespace ShoppingCartService.Controllers
     public class ItemsShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartRepo _repository;
+        private readonly IUserServiceClient _userServiceCient;
 
-        public ItemsShoppingCartController(IShoppingCartRepo repository)
+
+
+        public ItemsShoppingCartController(IShoppingCartRepo repository,IUserServiceClient userServiceCient)
         {
             _repository = repository;
+            _userServiceCient = userServiceCient;
         }
 
         [HttpGet("cart/{cartId}")]
@@ -35,13 +41,20 @@ namespace ShoppingCartService.Controllers
         }
 
         [HttpPost("cart/{cartId}")]
-        public ActionResult<ItemsShoppingCart> AddItemToCart(int cartId, ItemsShoppingCart item)
+        public async Task<ActionResult<ItemsShoppingCart>> AddItemToCart(int cartId, ItemsShoppingCart item)
         {
-            // Obtener el carrito al que se va a agregar el ítem
+            // Verificar que el carrito de compras existe
             var cart = _repository.GetShoppingCartById(cartId);
             if (cart == null)
             {
                 return NotFound($"Shopping cart with ID {cartId} not found.");
+            }
+
+            // Verificar que el producto existe
+            var product = await _userServiceCient.GetProductByIdAsync(item.ProductId);
+            if (product == null)
+            {
+                return NotFound($"Product with ID {item.ProductId} not found.");
             }
 
             // Asociar el ítem con el carrito
@@ -81,6 +94,25 @@ namespace ShoppingCartService.Controllers
             }
 
             _repository.RemoveItemFromCart(itemFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpDelete("cart/{cartId}")]
+        public ActionResult ClearCart(int cartId)
+        {
+            var cart = _repository.GetShoppingCartById(cartId);
+            if (cart == null)
+            {
+                return NotFound($"Shopping cart with ID {cartId} not found.");
+            }
+
+            var items = _repository.GetItemsByCartId(cartId);
+            foreach (var item in items)
+            {
+                _repository.RemoveItemFromCart(item);
+            }
             _repository.SaveChanges();
 
             return NoContent();

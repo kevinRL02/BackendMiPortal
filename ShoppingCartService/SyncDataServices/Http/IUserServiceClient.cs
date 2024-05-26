@@ -6,5 +6,6 @@ namespace ShoppingCartService.SyncDataServices.Http
     public interface IUserServiceClient
     {
         Task<User> GetUserByIdAsync(int id);
+        Task<Products?> GetProductByIdAsync(int id);
     }
 }
