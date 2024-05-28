@@ -109,5 +109,27 @@ namespace ShoppingCartService.Controllers
             _repository.SaveChanges();
             return Ok(item);
         }
+
+        [HttpDelete("{shoppingCartId}/items/{itemId}")]
+        public ActionResult DeleteItemFromShoppingCart(int shoppingCartId, int itemId)
+        {
+            var shoppingCart = _repository.GetShoppingCartById(shoppingCartId);
+            if (shoppingCart == null)
+            {
+                return NotFound($"Shopping cart with id {shoppingCartId} not found.");
+            }
+
+            var item = _repository.GetItemById(itemId);
+            if (item == null || item.ShoppingCartId != shoppingCartId)
+            {
+                return NotFound($"Item with id {itemId} not found in shopping cart {shoppingCartId}.");
+            }
+
+            _repository.RemoveItemFromCart(item);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 }

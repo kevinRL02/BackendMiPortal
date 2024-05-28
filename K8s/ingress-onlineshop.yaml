@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-srv
+  name: ingress-srv-onlineshop
   annotations:
     nginx.ingress.kubernetes.io/use-regex: 'true'
     nginx.ingress.kubernetes.io/enable-cors: 'true'
@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host:   b796-2800-484-587b-2900-70e1-cbb0-25ed-98c0.ngrok-free.app 
+    - host: onlineshop.com
       http:
         paths:
           - path: /api/users

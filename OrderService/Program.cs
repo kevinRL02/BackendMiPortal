@@ -11,11 +11,30 @@ using Microsoft.Extensions.Hosting;
 var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment; // Get the IWebHostEnvironment instance
 var Configuration = builder.Configuration;// Add services to the container.
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name:MyAllowSpecificOrigins, 
+        builder =>
+    {
+        builder.WithOrigins("http://localhost",
+            "http://localhost:4200",
+            "https://localhost:7230",
+            "http://localhost:90"
+            )
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .WithHeaders("ngrok-skip-browser-warning", "Content-Type", "Authorization") // Explicitly add custom headers here
+        .SetIsOriginAllowedToAllowWildcardSubdomains();
+    });
+});
+
 
 IServiceCollection serviceCollection = builder.Services;
 
@@ -63,6 +82,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 app.UseAuthorization();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseEndpoints(endpints =>
 {
