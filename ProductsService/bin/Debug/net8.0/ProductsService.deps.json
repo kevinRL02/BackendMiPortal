@@ -14,7 +14,8 @@
           "Microsoft.EntityFrameworkCore.Design": "8.0.4",
           "Microsoft.EntityFrameworkCore.InMemory": "8.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.4",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "prometheus-net.AspNetCore": "3.5.0"
         },
         "runtime": {
           "ProductsService.dll": {}
@@ -656,6 +657,29 @@
           }
         }
       },
+      "prometheus-net/3.5.0": {
+        "runtime": {
+          "lib/netcoreapp2.1/Prometheus.NetCore.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.5.0.0"
+          },
+          "lib/netcoreapp2.1/Prometheus.NetStandard.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.5.0.0"
+          }
+        }
+      },
+      "prometheus-net.AspNetCore/3.5.0": {
+        "dependencies": {
+          "prometheus-net": "3.5.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/Prometheus.AspNetCore.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.5.0.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -1284,6 +1308,20 @@
       "sha512": "sha512-KZYeKBET/2Z0gY1WlTAK7+RHTl7GSbtvTLDXEZZojUdAPqpQNDL6tHv7VUpqfX5VEOh+uRGKaZXkuD253nEOBQ==",
       "path": "mono.texttemplating/2.2.1",
       "hashPath": "mono.texttemplating.2.2.1.nupkg.sha512"
+    },
+    "prometheus-net/3.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8f9TyVpT8jy4Yp5GoHwj45t17l4fuJq3/sXXsuaX/iB5HmX9mZoVn2Bb6pGyCzImL+Z15KgBcJmRHlYEF5f98g==",
+      "path": "prometheus-net/3.5.0",
+      "hashPath": "prometheus-net.3.5.0.nupkg.sha512"
+    },
+    "prometheus-net.AspNetCore/3.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OyNpmFHzENOqYbqZiaxlcGc17PFdCSr06S9eqm5HRUokNrL/51dty6qi+l7eb9uFismUPGw28aRivrA49Do+gA==",
+      "path": "prometheus-net.aspnetcore/3.5.0",
+      "hashPath": "prometheus-net.aspnetcore.3.5.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.4.0": {
       "type": "package",

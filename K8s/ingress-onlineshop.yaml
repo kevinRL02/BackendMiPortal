@@ -77,4 +77,17 @@ spec:
                 name: orderservice-clusterip-srv
                 port:
                   number: 8080
-                  
+          - path: /payment/
+            pathType: Prefix
+            backend:
+              service:
+                name: paymentservice-clusterip-srv
+                port:
+                  number: 8080
+          - path: /recommendations
+            pathType: Prefix
+            backend:
+              service:
+                name: recommendationservice-clusterip-srv
+                port:
+                  number: 8080

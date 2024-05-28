@@ -144,5 +144,15 @@ namespace OrderService.Data
             }
             _context.Shippings.Remove(shipping);
         }
+
+        public IEnumerable<OrderItem> GetOrderItemsByUserId(int userId)
+        {
+            return _context.OrderItems
+                .Where(oi => _context.Orders.Any(o => o.OrderId == oi.OrderId && o.UserId == userId))
+                .ToList();
+        }
+
+
+        
     }
 }

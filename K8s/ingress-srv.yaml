@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host:   b796-2800-484-587b-2900-70e1-cbb0-25ed-98c0.ngrok-free.app 
+    - host:   bc8d-2800-484-587b-2900-c46e-9342-4c4-1f68.ngrok-free.app  
       http:
         paths:
           - path: /api/users
@@ -75,6 +75,20 @@ spec:
             backend:
               service:
                 name: orderservice-clusterip-srv
+                port:
+                  number: 8080
+          - path: /payment/
+            pathType: Prefix
+            backend:
+              service:
+                name: paymentservice-clusterip-srv
+                port:
+                  number: 8080
+          - path: /recommendations
+            pathType: Prefix
+            backend:
+              service:
+                name: recommendationservice-clusterip-srv
                 port:
                   number: 8080
                   

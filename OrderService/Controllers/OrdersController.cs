@@ -155,5 +155,17 @@ namespace OrderService.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("items/user/{userId}")]
+        public ActionResult<IEnumerable<OrderItem>> GetItemsByOrderUserId(int userId)
+        {
+            var orderItems = _repository.GetOrderItemsByUserId(userId);
+            if (orderItems == null || !orderItems.Any())
+            {
+                return NotFound($"No order items found for user with ID {userId}.");
+            }
+            return Ok(orderItems);
+        }
+
     }
 }

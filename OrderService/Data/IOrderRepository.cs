@@ -32,6 +32,10 @@ namespace OrderService.Data
         bool SaveChanges();
 
 
+        IEnumerable<OrderItem> GetOrderItemsByUserId(int userId);
+
+
+
     }
 
 

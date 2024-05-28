@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mQPpUIhNi74=",
+  "dgSpecHash": "mEotUpZ7WJs=",
   "success": true,
   "projectFilePath": "/home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ProductsService/ProductsService.csproj",
   "expectedPackageFiles": [
@@ -51,6 +51,8 @@
     "/home/kevinlopez/.nuget/packages/microsoft.sqlserver.server/1.0.0/microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/microsoft.win32.systemevents/6.0.0/microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
+    "/home/kevinlopez/.nuget/packages/prometheus-net/3.5.0/prometheus-net.3.5.0.nupkg.sha512",
+    "/home/kevinlopez/.nuget/packages/prometheus-net.aspnetcore/3.5.0/prometheus-net.aspnetcore.3.5.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "/home/kevinlopez/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",

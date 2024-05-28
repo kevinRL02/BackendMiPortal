@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendationservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendationservice
+  template:
+    metadata:
+      labels:
+        app: recommendationservice
+    spec:
+      containers:
+      - name: recommendationservice
+        image: kevinrl02/recommendationsservice
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendationservice-srv
+spec: 
+  type: LoadBalancer
+  selector: 
+    app: recommendationservice
+  ports: 
+    - name: recommendationservice
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendationservice-clusterip-srv
+spec: 
+  type: ClusterIP
+  selector: 
+    app: recommendationservice
+  ports: 
+    - name: recommendationservice
+      protocol: TCP
+      port: 8080
+      targetPort: 8080

@@ -66,6 +66,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseHttpMetrics();
 
 app.UseRouting();
 app.UseAuthorization();
@@ -75,6 +76,7 @@ app.UseCors(MyAllowSpecificOrigins);
 app.UseEndpoints(endpints =>
 {
     _ = endpints.MapControllers();
+    _ = endpints.MapMetrics();
 });
 
 app.Run();

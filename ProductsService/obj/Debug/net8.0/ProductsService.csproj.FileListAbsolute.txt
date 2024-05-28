@@ -140,3 +140,6 @@
 /home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ProductsService/obj/Debug/net8.0/ProductsService.genruntimeconfig.cache
 /home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ProductsService/obj/Debug/net8.0/ref/ProductsService.dll
 /home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ProductsService/bin/Debug/net8.0/appsettings.Production.json
+/home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ProductsService/bin/Debug/net8.0/Prometheus.NetCore.dll
+/home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ProductsService/bin/Debug/net8.0/Prometheus.NetStandard.dll
+/home/kevinlopez/Desktop/Arqui/TallerDotNetRest/ProductsService/bin/Debug/net8.0/Prometheus.AspNetCore.dll
