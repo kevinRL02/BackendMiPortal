@@ -1,4 +1,4 @@
-# Proyecto de Microservicios con Kubernetes y Prometheus
+# Orquestación de Microservicios en Kubernetes para una Tienda Online: Integración de Prometheus, Grafana y RabbitMQ
 
 Este repositorio alberga un proyecto que emplea Kubernetes para la orquestación de contenedores, Helm para la instalación de Prometheus, y diversos microservicios desarrollados en .NET, Python y Java EE. El propósito del proyecto es implementar una tienda online, aprovechando diferentes componentes arquitectónicos.
 
