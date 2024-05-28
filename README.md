@@ -1,7 +1,10 @@
 # Proyecto de Microservicios con Kubernetes y Prometheus
 
-Este repositorio contiene un proyecto que utiliza Kubernetes para la orquestación de contenedores, Helm para la instalación de Prometheus, y varios microservicios desarrollados en .NET, Python y Java EE.
+Este repositorio alberga un proyecto que emplea Kubernetes para la orquestación de contenedores, Helm para la instalación de Prometheus, y diversos microservicios desarrollados en .NET, Python y Java EE. El propósito del proyecto es implementar una tienda online, aprovechando diferentes componentes arquitectónicos.
 
+En esta aplicación, se utilizan un balanceadores de carga y un API Gateway con NGINX Controller para gestionar el tráfico entrante y dirigirlo hacia los microservicios correspondientes. Además, se emplea un bus de eventos con RabbitMQ para facilitar la comunicación entre los microservicios de manera eficiente y escalable.
+
+Cada microservicio cuenta con su propia base de datos, lo que permite una mayor modularidad y flexibilidad en el desarrollo y despliegue de la aplicación. Además, se integra Prometheus y Grafana para la monitorización del clúster Kubernetes, asegurando un seguimiento detallado del rendimiento y la salud del sistema en tiempo real
 ## Tabla de Contenidos
 
 - [Descripción](#descripción)
