@@ -59,6 +59,12 @@ namespace OrderService.Data
             _context.Orders.Remove(order);
         }
 
+        public IEnumerable<Order> GetOrdersByUserId(int userId)
+        {
+            return _context.Orders.Where(o => o.UserId == userId).ToList();
+        }
+
+
         // OrderItems
         public void CreateOrderItem(OrderItem orderItem)
         {

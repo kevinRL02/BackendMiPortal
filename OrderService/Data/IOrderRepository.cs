@@ -12,6 +12,9 @@ namespace OrderService.Data
         void UpdateOrder(Order order);
         void DeleteOrder(int id);
 
+        IEnumerable<Order> GetOrdersByUserId(int userId);  // Nuevo método
+
+
         ///
 
         void CreateOrderItem(OrderItem orderItem);

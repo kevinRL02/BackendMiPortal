@@ -115,6 +115,17 @@ namespace OrderService.Controllers
             return 100m;
         }
 
+        [HttpGet("user/{userId}")]
+        public ActionResult<IEnumerable<Order>> GetOrdersByUserId(int userId)
+        {
+            var orders = _repository.GetOrdersByUserId(userId);
+            if (orders == null || !orders.Any())
+            {
+                return NotFound($"No orders found for user with ID {userId}.");
+            }
+            return Ok(orders);
+        }
+
         [HttpPut("{id}")]
         public IActionResult UpdateOrder(int id, Order order)
         {
