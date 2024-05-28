@@ -9,11 +9,11 @@ Este repositorio contiene un proyecto que utiliza Kubernetes para la orquestaci�
 - [Prerrequisitos](#prerrequisitos)
 - [Instalación](#instalación)
   - [Configuración de Kubernetes](#configuración-de-kubernetes)
-  - [Despliegue de Prometheus con Helm](#despliegue-de-prometheus-con-helm)
+  - [Despliegue de Prometheus y Grafana con Helm](#despliegue-de-prometheus-y-grafana-con-helm)
   - [Despliegue de Microservicios](#despliegue-de-microservicios)
+  - [Configuración de Variables de Entorno](#configuración-de-variables-de-entorno)
 - [Uso](#uso)
-- [Contribuir](#contribuir)
-- [Licencia](#licencia)
+
 
 ## Descripción
 
@@ -42,32 +42,39 @@ Antes de comenzar, asegúrate de tener instalados los siguientes componentes:
 
 ## Instalación
 
+### Configuración de Kubernetes
+
 Si no tienes un clúster de Kubernetes, puedes usar Minikube para crear uno localmente:
 
-```bash
-minikube start
+- minikube start
 
+Despliegue de Prometheus y Grafana con Helm
 Primero, agrega el repositorio de Helm para Prometheus:
 
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
+- helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+- helm repo update
 
 Instala Prometheus usando Helm:
 
-helm install prometheus prometheus-community/prometheus
+- helm install prometheus prometheus-community/prometheus
 
-### Despliegue en Kubernetes:
-Aplica todos los archivos de despliegue YAML de Kubernetes para cada microservicio. Puedes hacerlo con el siguiente comando
-```bash
-kubectl apply -f k8s/
+Despliegue de Microservicios
+Aplica todos los archivos de despliegue YAML de Kubernetes para cada microservicio. Puedes hacerlo con el siguiente comando:
 
-### Configuración de Variables de Entorno, para el uso del ApiGateway
+Parametricza prometheus y grafna.
 
-Asegúrate de mapear la dirección 127.0.0.1 al nombre onlineshop en las variables de entorno. Puedes hacer esto añadiendo la siguiente línea a tu archivo /etc/hosts:
-```bash
-127.0.0.1 onlineshop
+- helm upgrade prometheus prometheus-community/kube-prometheus-stack -f values.yaml 
 
+Sube todos los microservicios a kuberentes
 
-## Uso
-```bash
-kubectl get services
+- kubectl apply -f k8s/
+
+Configuración de Variables de Entorno
+Para el uso del ApiGateway, asegúrate de mapear la dirección 127.0.0.1 al nombre onlineshop en las variables de entorno. Puedes hacer esto añadiendo la siguiente línea a tu archivo /etc/hosts:
+
+- 127.0.0.1 onlineshop
+
+# Uso
+Para acceder a los microservicios y la interfaz de Prometheus, usa los servicios expuestos en tu clúster de Kubernetes. Puedes obtener los detalles de los servicios con el siguiente comando:
+
+- kubectl get services
